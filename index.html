@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmos Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="#inicio" class="logo">COSMOS</a>
+        <nav class="nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#informacion">Información</a>
+            <a href="#visor">Galería</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <span class="badge">ESPACIO EXTERIOR</span>
+            <h1>Explora los Secretos del Universo</h1>
+            <p>Descubre datos fascinantes sobre los planetas y disfruta de nuestra galería fotográfica espacial.</p>
+            <a href="#visor" class="btn-hero">Ver fotos del espacio</a>
+        </section>
+
+        <section id="informacion" class="section">
+            <h2 class="section-title">Misterios del Espacio</h2>
+            <p class="section-desc">Un vistazo a nuestro vecindario cósmico y sus maravillas.</p>
+
+            <div class="cards-container">
+                <article class="card">
+                    <img src="images/earth.jpg" alt="Planeta Tierra">
+                    <div class="card-content">
+                        <h3>Planeta Tierra</h3>
+                        <p>El único lugar conocido con vida en el cosmos. Viaja a gran velocidad alrededor del Sol en un delicado equilibrio.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="images/mars.jpg" alt="Planeta Marte">
+                    <div class="card-content">
+                        <h3>Marte</h3>
+                        <p>El planeta rojo posee cañones inmensos y el Monte Olimpo, el volcán más grande de todo el sistema solar.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="images/saturn.jpg" alt="Planeta Saturno">
+                    <div class="card-content">
+                        <h3>Saturno</h3>
+                        <p>Gigante gaseoso con anillos espectaculares formados por millones de pedazos de hielo y roca espacial.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="datos-rapidos">
+                <div class="dato">
+                    <strong>13.800 M</strong>
+                    <span>Años de edad del universo</span>
+                </div>
+                <div class="dato">
+                    <strong>2 Billones</strong>
+                    <span>Galaxias estimadas</span>
+                </div>
+                <div class="dato">
+                    <strong>300.000 km/s</strong>
+                    <span>Velocidad de la luz</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="visor" class="section">
+            <h2 class="section-title">Ventana al Espacio</h2>
+
+            <div class="visor-container">
+                <div class="visor-caja">
+                    <img id="foto-imagen" src="images/gallery-earth.jpg" alt="Foto espacial">
+                    <div class="visor-pie">
+                        <span id="foto-titulo">Planeta Tierra desde el espacio</span>
+                        <span id="foto-contador" class="contador">1 / 10</span>
+                    </div>
+                </div>
+
+                <div class="visor-botones">
+                    <button onclick="cambiarFoto(-1)">Anterior</button>
+                    <button onclick="cambiarFoto(1)">Siguiente</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Cosmos Explorer - Página de exploración espacial</p>
+    </footer>
+
+    <script>
+        const fotos = [
+            { src: "images/gallery-earth.jpg", titulo: "Exposicion" },
+            { src: "images/gallery-moon.jpg", titulo: "Luna" },
+            { src: "images/gallery-mars.jpg", titulo: "Marte" },
+            { src: "images/gallery-saturn.jpg", titulo: "Saturno y sus anillos" },
+            { src: "images/gallery-jupiter.jpg", titulo: "La tormenta de Jupiter" },
+            { src: "images/gallery-nebula.jpg", titulo: "Nebulosa" },
+            { src: "images/gallery-galaxy.jpg", titulo: "Galaxias lejanas" },
+            { src: "images/gallery-astronaut.jpg", titulo: "Equipo de la NASA" },
+            { src: "images/gallery-rocket.jpg", titulo: "Despegue de cohete" },
+            { src: "images/gallery-stars.jpg", titulo: "Campo de estrellas" }
+        ];
+
+        let indice = 0;
+
+        function cambiarFoto(paso) {
+            indice = indice + paso;
+
+            if (indice < 0) {
+                indice = fotos.length - 1;
+            }
+            if (indice >= fotos.length) {
+                indice = 0;
+            }
+
+            document.getElementById("foto-imagen").src = fotos[indice].src;
+            document.getElementById("foto-titulo").textContent = fotos[indice].titulo;
+            document.getElementById("foto-contador").textContent = (indice + 1) + " / " + fotos.length;
+        }
+    </script>
+</body>
+</html>
